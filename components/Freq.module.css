@@ -73,6 +73,11 @@
   margin: 0;
 }
 
+.om,
+.mantra {
+  font-family: var(--font-sanskrit), var(--bvlk-font-body);
+}
+
 .om {
   font-size: clamp(4rem, 10vw, 8rem);
   line-height: 1;

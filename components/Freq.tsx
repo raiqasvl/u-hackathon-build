@@ -359,7 +359,9 @@ export function Freq() {
         <div className={`${s.signal} ui-plate`}>
           <div className={s.phaseRow} data-active={phase === 'rec1' || phase === 'idle'}>
             <span className="ui-meta">PHASE 01 / {GLIDE_SEC} S</span>
-            <p className={s.om}>ॐ</p>
+            <p className={s.om} lang="sa">
+              ॐ
+            </p>
             <p className="ui-prose">Sing OM as one breath. Start at your lowest comfortable note and glide to your highest.</p>
           </div>
           <div className={s.phaseRow} data-active={phase === 'rec2' || phase === 'between'}>
