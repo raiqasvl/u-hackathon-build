@@ -1,0 +1,140 @@
+/*
+ * BVLK design tokens.
+ *
+ * The palette is monochrome. There is no accent colour: colour enters only as
+ * computed thin-film interference in dispersal zones, which is a runtime
+ * concern, not a token. See D004.
+ */
+
+:root {
+  /* Ground. Never flat black; the ground has material. */
+  --bvlk-black: #050505;
+  --bvlk-black-raised: #0b0b0b;
+  --bvlk-black-line: #1a1a1a;
+
+  /* Marks on the ground. */
+  --bvlk-white: #e8e8e8;
+  --bvlk-white-dim: #9a9a9a;
+  --bvlk-white-faint: #5a5a5a;
+
+  /* Paper surface: release artwork and identity plates. */
+  --bvlk-paper: #efece7;
+  --bvlk-paper-ink: #0a0a0a;
+
+  /* Grain is present but barely. */
+  --bvlk-grain-opacity: 0.045;
+
+  /*
+   * Plate.
+   *
+   * The ground is a surface being read, not an empty field: registration marks,
+   * measured scales and radiographic falloff. All of it is luminance, never hue,
+   * so the greyscale test is unaffected and D004 stands.
+   *
+   * Every value here is deliberately low. These are the knobs to turn if the
+   * ground needs more or less presence; turning them up past roughly double
+   * starts to cost legibility on terminal-face body copy, which is the limit
+   * that matters.
+   */
+  --bvlk-plate-tick: 10px;
+  --bvlk-plate-inset: 1rem;
+  --bvlk-scale-step: 8px;
+
+  /* Exposure falloff across a slide. An X-ray plate is never evenly lit. */
+  --bvlk-radiograph: 0.055;
+
+  /* Bloom around dense marks: white only, so it reads as exposure not colour. */
+  --bvlk-xray-bloom: 0.4;
+  --bvlk-xray-spread: 7px;
+
+  /*
+   * Type roles (D007). Faces were chosen on measured glyph coverage, not taste:
+   * the identity depends on Λ Ø ⊘ ⊙ Ξ ∫ ∅ ∩ × ╳ ₀ ≠ ∞ █ ▉ ▓ and most display
+   * faces carry almost none of it. The --font-* variables are supplied by
+   * next/font in apps/web/app/fonts.ts; the fallbacks keep the page sane if a
+   * consumer has not wired them up.
+   */
+  --bvlk-font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+
+  /*
+   * Prose is the terminal face. One face draws both the running text and the
+   * mutation language, so ∅ ∩ Λ █ ▓ are never handed to an OS fallback: no
+   * Google latin subset carries them, which is what the previous web body face
+   * got wrong.
+   */
+  --bvlk-font-body: var(--font-terminal), ui-monospace, "SF Mono", Menlo, monospace;
+  --bvlk-font-meta: var(--font-terminal), ui-monospace, "SF Mono", Menlo, monospace;
+  --bvlk-font-index: var(--font-terminal-condensed), ui-monospace, Menlo, monospace;
+  --bvlk-font-pixel: var(--font-pixel), ui-monospace, Menlo, monospace;
+
+  /* Scale contrast between DISPLAY and META does the compositional work. */
+  --bvlk-size-display: clamp(3rem, 12vw, 11rem);
+  --bvlk-size-body: 1rem;
+  --bvlk-size-lede: clamp(1.15rem, 1.9vw, 1.45rem);
+  --bvlk-size-meta: 0.6875rem;
+
+  --bvlk-tracking-meta: 0.16em;
+  --bvlk-leading-display: 0.85;
+  /*
+   * A monospaced face needs more leading than a proportional one: every line is
+   * the same visual weight, so the eye needs the gap to find the next row.
+   */
+  --bvlk-leading-body: 1.75;
+  --bvlk-leading-lede: 1.45;
+  /* Never negative on a fixed-pitch face; it closes the counters. */
+  --bvlk-tracking-lede: 0.005em;
+
+  /*
+   * Prose sits on a measure, never the full column. Tighter than a proportional
+   * face would take: in a fixed pitch, ch is a true character count and long
+   * mono lines are hard to track back.
+   */
+  --bvlk-measure: 56ch;
+  --bvlk-measure-lede: 40ch;
+
+  /* Grid. Strict, never advertised. */
+  --bvlk-columns: 12;
+  --bvlk-gutter: 1.5rem;
+  --bvlk-margin: 3rem;
+
+  /*
+   * Width of the index rail. One number, used by the rail itself AND by the
+   * clearance content leaves for it, so the two cannot drift.
+   *
+   * They did drift: the rail measured 7rem while content reserved 5rem, and the
+   * catalogue tables ran 32px underneath it. Reserving a guessed value is the
+   * bug; deriving both from this is the fix. The rail is fixed at this width and
+   * long labels truncate, so a longer record id can never widen it back into the
+   * content.
+   */
+  --bvlk-rail: 7rem;
+
+  /* Motion. Slow, intentional, physical. */
+  --bvlk-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bvlk-duration-fast: 0.32s;
+  --bvlk-duration-med: 0.55s;
+  --bvlk-duration-slow: 0.9s;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --bvlk-columns: 6;
+    --bvlk-margin: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --bvlk-columns: 4;
+    --bvlk-margin: 1.25rem;
+  }
+}
+
+/* Stillness is part of the temporal architecture, and a requirement. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bvlk-duration-fast: 0s;
+    --bvlk-duration-med: 0s;
+    --bvlk-duration-slow: 0s;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "0freq",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "check-types": "tsc --noEmit",
+    "compile:contract": "node scripts/compile-contract.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1",
+    "meyda": "^5.6.3",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "viem": "^2.57.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "solc": "^0.8.37",
+    "typescript": "^7.0.2"
+  }
+}
