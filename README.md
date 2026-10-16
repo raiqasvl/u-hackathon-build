@@ -2,6 +2,8 @@
 
 **A voice becomes a frequency. The voice stays with you; the abstraction enters the record.**
 
+**Live:** https://u-hackathon-build-0-freq.vercel.app · **Contract (Fuji):** [`0x1668…df7b`](https://testnet.snowtrace.io/address/0x1668483b1c38dc82d94d956eb20e29cad14bdf7b)
+
 U-Hackathon 2026 · Tracks: AI and Web3 · Built with ElevenLabs and Avalanche · First community: [BVLK.EXE](https://bvlk.network), Bangkok
 
 ## The problem
