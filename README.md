@@ -36,6 +36,8 @@ cp .env.example .env.local   # ELEVENLABS_API_KEY, NEXT_PUBLIC_FREQ_CONTRACT
 npm run dev                  # http://localhost:3000   (add ?test for a synthetic signal without a microphone)
 ```
 
+Deployed on Avalanche Fuji: [`0x1668483b1c38dc82d94d956eb20e29cad14bdf7b`](https://testnet.snowtrace.io/address/0x1668483b1c38dc82d94d956eb20e29cad14bdf7b).
+
 Contract: `contracts/ZeroFreq.sol`, compiled with `npm run compile:contract` into `lib/zerofreq.json`. Deploy once from your wallet at `/deploy` on Avalanche Fuji (chainId 43113), then set `NEXT_PUBLIC_FREQ_CONTRACT`.
 
 ## Stack

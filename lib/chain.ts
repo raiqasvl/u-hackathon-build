@@ -18,7 +18,8 @@ import artifact from './zerofreq.json'
 
 export const ABI = artifact.abi
 export const BYTECODE = artifact.bytecode as Hex
-export const CONTRACT = (process.env.NEXT_PUBLIC_FREQ_CONTRACT || '') as Address | ''
+// ZeroFreq on Fuji, deployed 2026-10-16. Override with NEXT_PUBLIC_FREQ_CONTRACT.
+export const CONTRACT = (process.env.NEXT_PUBLIC_FREQ_CONTRACT || '0x1668483b1c38dc82d94d956eb20e29cad14bdf7b') as Address | ''
 export const EXPLORER = 'https://testnet.snowtrace.io'
 
 declare global {
